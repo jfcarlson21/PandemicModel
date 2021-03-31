@@ -4,6 +4,7 @@
  * 
  */
 package pandemicmodel;
+import java.awt.Point;
 
 /**
  *
