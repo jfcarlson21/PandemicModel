@@ -13,12 +13,17 @@ import java.util.Random;
  * @author lainiecederholm
  */
 public class Person {
+    boolean infected;
     static ArrayList<Integer> personCoord = new ArrayList<>();
     static ArrayList<Integer> desCoord = new ArrayList<>();
     static Random rand = new Random();
     
     static int pace;
     static int dest;
+
+    public void Person(boolean inf){
+        infected = inf;
+    }
     
     public static ArrayList enterPark(){
         personCoord.add(50);
