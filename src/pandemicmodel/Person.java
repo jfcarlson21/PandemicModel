@@ -5,6 +5,7 @@
  */
 package pandemicmodel;
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -14,6 +15,8 @@ import java.util.Random;
  */
 public class Person {
     boolean infected;
+    static Point personPoint = new Point();
+    static Point desPoint = new Point();
     static ArrayList<Integer> personCoord = new ArrayList<>();
     static ArrayList<Integer> desCoord = new ArrayList<>();
     static Random rand = new Random();
@@ -25,10 +28,9 @@ public class Person {
         infected = inf;
     }
     
-    public static ArrayList enterPark(){
-        personCoord.add(50);
-        personCoord.add(100);
-        return personCoord;
+    public static Point enterPark(){
+        personPoint.move(50, 100);
+        return personPoint;
     }
     
     public static int walkingSpeed(){
@@ -36,60 +38,56 @@ public class Person {
         return pace;
     }
     
-    public static ArrayList nextLoc(){
+    public static Point nextLoc(){
         int randX, randY;
         dest = rand.nextInt(7);
+        //THIS NEXT PART NEEDS TO BE CHANGED TO SET desCoord TO CERTAIN LOCATION GIVEN IN PARK LAYOUT
         switch(dest){
             case 0 -> {
                 //FC1
-                desCoord.add(15);
-                desCoord.add(15);
+                desPoint.setLocation(15, 15);
             }
             case 1 -> {
                 //R1
-                desCoord.add(25);
-                desCoord.add(50);
+                desPoint.setLocation(25,50);
             }
             case 2 -> {
                 //FC2
-                desCoord.add(25);
-                desCoord.add(80);
+                desPoint.setLocation(25, 80);
             }
             case 3 -> {
                 //R2
-                desCoord.add(80);
-                desCoord.add(20);
+                desPoint.setLocation(80, 20);
             }
             case 4 -> {
                 //R3
-                desCoord.add(85);
-                desCoord.add(45);
+                desPoint.setLocation(85, 45);
             }
             case 5 -> {
                 //FC3
-                desCoord.add(90);
-                desCoord.add(80);
+                desPoint.setLocation(90, 80);
             }
             default -> {
                 randX = 30+rand.nextInt(40);
                 randY = rand.nextInt(100);
+                desPoint.setLocation(randX,randY);
             }
         }
-        return desCoord;
+        return desPoint;
     }
     
-    public static ArrayList move(){
-        desCoord = Person.nextLoc();
+    public static Point move(){
+        desPoint = Person.nextLoc();
         pace = Person.walkingSpeed();
         
         
-        double totX, totY, theta, stepX, stepY, totDist, x, y;
-        int xInit, xDes, yInit, yDes, stepNum;
+        double totX, totY, theta, stepX, stepY, totDist;
+        double xInit, xDes, yInit, yDes, stepNum;
         
-        xInit = personCoord.get(0);
-        yInit = personCoord.get(1);
-        xDes = desCoord.get(0);
-        yDes = desCoord.get(1);
+        xInit = personPoint.getX();
+        yInit = personPoint.getY();
+        xDes = desPoint.getX();
+        yDes = desPoint.getY();
         
         if(xDes>=xInit){
             totX = xDes - xInit;
@@ -129,6 +127,6 @@ public class Person {
         personCoord.add(desCoord.get(0));
         personCoord.add(desCoord.get(1));
         
-        return personCoord;
+        return personPoint;
     }
 }
