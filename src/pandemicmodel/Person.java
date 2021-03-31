@@ -24,8 +24,8 @@ public class Person {
     static int pace;
     static int dest;
 
-    public void Person(boolean inf){
-        infected = inf;
+    public Person(boolean infect){
+        infected = infect;
     }
     
     public static Point enterPark(){
