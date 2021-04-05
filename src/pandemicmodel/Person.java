@@ -26,6 +26,8 @@ public class Person {
 
     public Person(boolean infect){
         infected = infect;
+        Person.enterPark();
+        Person.nextLoc();
     }
     
     public static Point enterPark(){
