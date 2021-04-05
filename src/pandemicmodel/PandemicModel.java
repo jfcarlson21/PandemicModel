@@ -11,7 +11,6 @@ import java.awt.Point;
  * @author jakecarlson
  */
 public class PandemicModel {
-
     /**
      * @param args the command line arguments
      */
