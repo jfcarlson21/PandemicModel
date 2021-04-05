@@ -29,7 +29,7 @@ public class Person {
     }
     
     public static Point enterPark(){
-        personPoint.move(50, 100);
+        personPoint.setLocation(50, 100);
         return personPoint;
     }
     
@@ -115,17 +115,10 @@ public class Person {
         }
         
         for(int i=0; i<stepNum; i++){
-                x = personCoord.get(0);
-                y = personCoord.get(1);
-                personCoord.remove(0);
-                personCoord.remove(1);
-                personCoord.add((int)(x+stepX));
-                personCoord.add((int)(y+stepY));
+            personPoint.move((int)stepX, (int)stepY);
             }
-        personCoord.remove(0);
-        personCoord.remove(1);
-        personCoord.add(desCoord.get(0));
-        personCoord.add(desCoord.get(1));
+        
+        personPoint.setLocation(desPoint);
         
         return personPoint;
     }
