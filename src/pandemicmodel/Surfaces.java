@@ -10,5 +10,15 @@ package pandemicmodel;
  * @author lainiecederholm
  */
 public class Surfaces {
+    double probInfect;
     
+    public Surfaces(double infect) {
+        probInfect = infect;
+    }
+    
+    public double surfType(String type){
+        
+        
+        return probInfect;
+    }
 }
