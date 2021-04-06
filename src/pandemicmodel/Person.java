@@ -23,11 +23,11 @@ public class Person {
     
     static int pace;
     static int dest;
+    static double stepX, stepY;
 
     public Person(boolean infect){
         infected = infect;
         Person.enterPark();
-        Person.nextLoc();
     }
     
     public static Point enterPark(){
@@ -78,12 +78,12 @@ public class Person {
         return desPoint;
     }
     
-    public static Point move(){
+    public static void stepSize(){
         desPoint = Person.nextLoc();
         pace = Person.walkingSpeed();
         
         
-        double totX, totY, theta, stepX, stepY, totDist;
+        double totX, totY, theta, totDist;
         double xInit, xDes, yInit, yDes, stepNum;
         
         xInit = personPoint.getX();
@@ -115,12 +115,11 @@ public class Person {
                 stepY = pace*Math.sin(theta);
             }
         }
+    }
+    
+    public static Point takeStep(){
         
-        for(int i=0; i<stepNum; i++){
-            personPoint.move((int)stepX, (int)stepY);
-            }
-        
-        personPoint.setLocation(desPoint);
+        personPoint.move((int)stepX, (int)stepY);
         
         return personPoint;
     }
