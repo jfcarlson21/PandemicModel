@@ -11,25 +11,24 @@ import java.util.ArrayList;
  *
  * @author lainiecederholm
  */
-public class Line {
+public class Line extends java.util.ArrayList<Person>{
     
-    static ArrayList<Integer> line = new ArrayList<>();
-    static ArrayList<Integer> nextLoc = new ArrayList<>();
+
     
-    public static void lineTest(){
+    public void lineTest(){
         for(int i=1; i<=10; i++){
-            line.add(i);
+            this.add(i);
         }
     }
     
-    public static void leaveLine(){
+    public void leaveLine(){
         Line.lineTest();
-        if(line.size()>0){
+        if(this.size()>0){
             for(int i=0; i<10; i++){
-                nextLoc.add(line.get(0));
-                line.remove(0);
+                nextLoc.add(this.get(0));
+                this.remove(0);
                 System.out.println(nextLoc);
-                System.out.println(line);
+                System.out.println(this);
             }
             
         }
