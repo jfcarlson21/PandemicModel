@@ -5,10 +5,16 @@
  */
 package pandemicmodel;
 
+
+import java.util.ArrayList;
+
 /**
  *
  * @author lainiecederholm
  */
 public class ParkLayout {
-    
+    ArrayList<Attraction> attractions = new ArrayList();
+    public ParkLayout(ArrayList<Attraction> a){
+        attractions = a;
+    }
 }

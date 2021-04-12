@@ -9,6 +9,6 @@ package pandemicmodel;
  *
  * @author lainiecederholm
  */
-public class FoodCourt {
+public class FoodCourt extends Attraction{
     
 }

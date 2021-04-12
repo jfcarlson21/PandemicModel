@@ -24,14 +24,19 @@ public class Person {
     static int pace;
     static int dest;
     static double stepX, stepY;
+    static int stepCount, requiredStepNum;
+    static boolean walking = true;
+    public static ThemePark Park;
 
-    public Person(boolean infect){
+    public Person(boolean infect, ThemePark park){
         infected = infect;
         Person.enterPark();
+        Park = park;
     }
     
     public static Point enterPark(){
         personPoint.setLocation(50, 100);
+        stepSize();
         return personPoint;
     }
     
@@ -81,10 +86,11 @@ public class Person {
     public static void stepSize(){
         desPoint = Person.nextLoc();
         pace = Person.walkingSpeed();
+        stepCount = 0;
         
         
         double totX, totY, theta, totDist;
-        double xInit, xDes, yInit, yDes, stepNum;
+        double xInit, xDes, yInit, yDes;
         
         xInit = personPoint.getX();
         yInit = personPoint.getY();
@@ -96,7 +102,7 @@ public class Person {
             totY = yDes - yInit;
             totDist = Math.sqrt(Math.pow(totX, 2) + Math.pow(totY, 2));
             theta = Math.atan(totY/totX);
-            stepNum = (int)totDist%pace;
+            requiredStepNum = (int)totDist%pace;
             stepX = pace*Math.cos(theta);
             stepY = pace*Math.sin(theta);
             
@@ -106,7 +112,7 @@ public class Person {
             totY = yInit - yDes;
             totDist = Math.sqrt(Math.pow(totX, 2) + Math.pow(totY, 2));
             theta = Math.atan(totY/totX);
-            stepNum = (int)totDist%pace;
+            requiredStepNum = (int)totDist%pace;
             stepX = -1*pace*Math.cos(theta);
             if(yInit>=yDes){
                 stepY = -1*pace*Math.sin(theta);
@@ -116,11 +122,34 @@ public class Person {
             }
         }
     }
-    
-    public static Point takeStep(){
-        
-        personPoint.move((int)stepX, (int)stepY);
-        
+    public void enterLine(int dest){
+        Attraction attraction = Park.attractions[dest];
+        attraction.line.add(this);
+    }
+    public Point Update(){
+        if (stepCount<requiredStepNum){
+            personPoint.move((int)stepX, (int)stepY);
+            stepCount+=1;
+        }
+        else if (stepCount==requiredStepNum){
+            //do something based on where they are...i.e. enter ride or sit down at table
+            if (walking){
+                enterQueue(dest);
+            }
+            else if (timeAtDestination<totalTime){
+                //stay at attraction
+
+            }
+            else{
+                walking = true;
+                stepCount+=1;
+            }
+        }
+        else{
+            stepSize();
+            personPoint.move((int)stepX, (int)stepY);
+            stepCount+=1;
+        }
         return personPoint;
     }
 }
