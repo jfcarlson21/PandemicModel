@@ -1,0 +1,16 @@
+Ride 50 8 
+Ride 90 32 
+Ride 40 40 
+Ride 34 48 
+Ride 62 48 
+Ride 58 56 
+Ride 48 60 
+Ride 62 68 
+FoodCourt 24 8 
+FoodCourt 48 32 
+FoodCourt 68 36 
+FoodCourt 48 40 
+FoodCourt 14 60 
+FoodCourt 52 52 
+Entrance 40 0 
+
