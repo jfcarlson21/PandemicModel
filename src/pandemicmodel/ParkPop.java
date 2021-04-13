@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class ParkPop {
     ArrayList<Person> allPeople = new ArrayList<Person>();
     ArrayList<Person> infectedPeople = new ArrayList<Person>();
-    ArrayList<Person> healthyPeople = new ArrayList<Person>();
+    static ArrayList<Person> healthyPeople = new ArrayList<Person>();
     int totalPopulation;
     public void ParkPop(int totalPop, double percentInfected, ThemePark park){
         totalPopulation = totalPop;
