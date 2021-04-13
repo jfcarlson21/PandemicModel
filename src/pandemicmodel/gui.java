@@ -18,16 +18,20 @@ public class gui extends JPanel{
     private float ballRad = 2;
     private float ballX = ballRad+10;
     private float ballY = ballRad+10;
+    private float ballVx;
+    private float ballVy;
     private static final int UPDATE_RATE = 30;
     static ArrayList hPop = ParkPop.healthyPeople;
     
-    public gui(float ballVx, float ballVy){
+    public gui(float ballvx, float ballvy, float ballx, float bally){
         
         this.setPreferredSize(new Dimension(BOX_WIDTH, BOX_HEIGHT));
-        
+        ballX = ballx;
+        ballY = bally;
+        ballVx = ballvx;
+        ballVy = ballvy;
         //start ball bouncing in its own thread
         Thread gameThread = new Thread(){
-            @Override
             public void run(){
                 while(true){
                     ballX+=ballVx;
