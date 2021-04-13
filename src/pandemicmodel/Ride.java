@@ -12,11 +12,11 @@ import java.util.ArrayList;
  *
  * @author lainiecederholm
  */
-public class Ride{
+public class Ride extends Attraction{
     public int seatsPerCart;
     public int numOfCarts;
-    public Ride(int cartNum, int seatsOneCart) {
-
+    public Ride(Point loc, int cartNum, int seatsOneCart) {
+        super(loc);
         seatsPerCart = seatsOneCart;
         numOfCarts = cartNum;
         leaveRate = seatsOneCart;
