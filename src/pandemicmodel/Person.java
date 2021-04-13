@@ -36,7 +36,7 @@ public class Person {
     }
     
     public static Point enterPark(){
-        personPoint.setLocation(50, 100);
+        personPoint.setLocation(fileInOut.ent);
         stepSize();
         return personPoint;
     }
