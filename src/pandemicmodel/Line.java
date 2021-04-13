@@ -13,25 +13,31 @@ import java.util.ArrayList;
  */
 public class Line extends java.util.ArrayList<Person>{
     int leaveSize;
-    public Line(int leaveRate){
+    int length = 0;
+    Attraction attraction;
+    public Line(int leaveRate, Attraction attraction1){
+        attraction = attraction1;
         leaveSize = leaveRate;
+
     }
 
     
 
     
     public void leaveLine(){
-        if(this.size()>0){
-            for(int i=0; i<10; i++){
-                nextLoc.add(this.get(0));
+        length = this.size();
+        if(length>leaveSize){
+            for(int i=0; i<leaveSize; i++){
+                Person person = this.get(0);
                 this.remove(0);
-                System.out.println(nextLoc);
-                System.out.println(this);
+
             }
             
         }
         else{
-            System.out.println("empty line");
+            for (int i = 0; i < length; i++) {
+
+            }
         }
     }
     

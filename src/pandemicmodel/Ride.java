@@ -5,16 +5,18 @@
  */
 package pandemicmodel;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
  *
  * @author lainiecederholm
  */
-public class Ride extends Attraction{
-    int seatsPerCart;
-    int numOfCarts;
+public class Ride{
+    public int seatsPerCart;
+    public int numOfCarts;
     public Ride(int cartNum, int seatsOneCart) {
+
         seatsPerCart = seatsOneCart;
         numOfCarts = cartNum;
         leaveRate = seatsOneCart;
@@ -24,5 +26,4 @@ public class Ride extends Attraction{
             fullRide.add(cartE);
         }
     }
-
 }

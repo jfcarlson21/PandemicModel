@@ -27,6 +27,7 @@ public class Person {
     static int stepCount, requiredStepNum;
     static boolean walking = true;
     public static ThemePark Park;
+    public Attraction currentAttraction;
 
     public Person(boolean infect, ThemePark park){
         infected = infect;
@@ -123,8 +124,8 @@ public class Person {
         }
     }
     public void enterLine(int dest){
-        Attraction attraction = Park.attractions[dest];
-        attraction.line.add(this);
+        currentAttraction = Park.attractions.get(dest);
+        currentAttraction.line.add(this);
     }
     public Point Update(){
         if (stepCount<requiredStepNum){
@@ -134,7 +135,7 @@ public class Person {
         else if (stepCount==requiredStepNum){
             //do something based on where they are...i.e. enter ride or sit down at table
             if (walking){
-                enterQueue(dest);
+                enterLine(dest);
             }
             else if (timeAtDestination<totalTime){
                 //stay at attraction
