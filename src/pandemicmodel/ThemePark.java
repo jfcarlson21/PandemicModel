@@ -10,5 +10,6 @@ package pandemicmodel;
  * @author lainiecederholm
  */
 public class ThemePark {
-    
+    ParkLayout layout = new ParkLayout("disneyLayout.txt");
+
 }
