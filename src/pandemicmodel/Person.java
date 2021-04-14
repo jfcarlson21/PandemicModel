@@ -48,39 +48,9 @@ public class Person {
     
     public static Point nextLoc(){
         int randX, randY;
-        dest = rand.nextInt(7);
+        dest = rand.nextInt(Attraction.attractions.size());
         //THIS NEXT PART NEEDS TO BE CHANGED TO SET desCoord TO CERTAIN LOCATION GIVEN IN PARK LAYOUT
-        switch(dest){
-            case 0 -> {
-                //FC1
-                desPoint.setLocation(15, 15);
-            }
-            case 1 -> {
-                //R1
-                desPoint.setLocation(25,50);
-            }
-            case 2 -> {
-                //FC2
-                desPoint.setLocation(25, 80);
-            }
-            case 3 -> {
-                //R2
-                desPoint.setLocation(80, 20);
-            }
-            case 4 -> {
-                //R3
-                desPoint.setLocation(85, 45);
-            }
-            case 5 -> {
-                //FC3
-                desPoint.setLocation(90, 80);
-            }
-            default -> {
-                randX = 30+rand.nextInt(40);
-                randY = rand.nextInt(100);
-                desPoint.setLocation(randX,randY);
-            }
-        }
+        desPoint = Attractions.attractions.get(dest);
         return desPoint;
     }
     
