@@ -36,12 +36,13 @@ public class ParkLayout {
         }
         
         while(fileIn.hasNext()){
-            String next = fileIn.next();
+            String type = fileIn.next();
+            String name = fileIn.next();
             x = fileIn.nextInt();
             y = fileIn.nextInt();
             int timeAt = fileIn.nextInt();
             Point loc = new Point(x,y);
-            switch (next){
+            switch (type){
                 case "Ride" -> {
                     //build ride
                     Ride ride = new Ride(loc, timeAt, 15, 8);
