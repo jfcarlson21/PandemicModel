@@ -39,16 +39,17 @@ public class ParkLayout {
             String next = fileIn.next();
             x = fileIn.nextInt();
             y = fileIn.nextInt();
+            int timeAt = fileIn.nextInt();
             Point loc = new Point(x,y);
             switch (next){
                 case "Ride" -> {
                     //build ride
-                    Ride ride = new Ride(loc, 15, 8);
+                    Ride ride = new Ride(loc, timeAt, 15, 8);
                     attractions.add(ride);
                 }
                 case "FoodCourt" -> {
                     //build foodCourt
-                    FoodCourt fc = new FoodCourt(loc);
+                    FoodCourt fc = new FoodCourt(loc, timeAt);
                     attractions.add(fc);
                 }
                 case "Entrance" -> //build entrance
