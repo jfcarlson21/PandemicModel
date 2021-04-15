@@ -13,7 +13,7 @@ import java.awt.*;
  */
 public class FoodCourt extends Attraction{
 
-    public FoodCourt(Point loc) {
-        super(loc);
+    public FoodCourt(Point loc, int timeAtAttraction) {
+        super(loc, timeAtAttraction);
     }
 }

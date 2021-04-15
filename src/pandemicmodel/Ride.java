@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class Ride extends Attraction{
     public int seatsPerCart;
     public int numOfCarts;
-    public Ride(Point loc, int cartNum, int seatsOneCart) {
-        super(loc);
+    public Ride(Point loc, int timeAtAttraction, int cartNum, int seatsOneCart) {
+        super(loc, timeAtAttraction);
         seatsPerCart = seatsOneCart;
         numOfCarts = cartNum;
         leaveRate = seatsOneCart;

@@ -16,7 +16,7 @@ public class ParkPop {
     ArrayList<Person> infectedPeople = new ArrayList<Person>();
     static ArrayList<Person> healthyPeople = new ArrayList<Person>();
     int totalPopulation;
-    public void ParkPop(int totalPop, double percentInfected, ThemePark park){
+    public ParkPop(int totalPop, double percentInfected, ThemePark park){
         totalPopulation = totalPop;
         for (int i = 0; i < totalPopulation*percentInfected; i++) {
             Person person = new Person(true, park);

@@ -36,7 +36,7 @@ public class Person {
     }
     
     public static Point enterPark(){
-        personPoint.setLocation(fileInOut.ent);
+        personPoint.setLocation(Park.layout.ent);
         stepSize();
         return personPoint;
     }
@@ -94,7 +94,7 @@ public class Person {
         }
     }
     public void enterLine(int dest){
-        currentAttraction = Park.attractions.get(dest);
+        currentAttraction = Park.layout.attractions.get(dest);
         currentAttraction.line.add(this);
     }
     public Point Update(){

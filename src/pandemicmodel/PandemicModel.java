@@ -15,7 +15,12 @@ public class PandemicModel {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ThemePark myPark = new ThemePark();
+        ParkPop parkPop = new ParkPop(100,0.2,myPark);
+        for (int i = 0; i < 100000; i++) {
+            parkPop.update();
+            myPark.update();
+        }
     }
     
 }

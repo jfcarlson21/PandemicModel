@@ -26,7 +26,7 @@ public class Line extends java.util.ArrayList<Person>{
             for(int i=0; i<leaveSize; i++){
                 Person person = this.get(0);
                 this.remove(0);
-                attraction.enter();
+                attraction.takeIn(person);
 
             }
             
