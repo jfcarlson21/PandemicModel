@@ -31,10 +31,10 @@ public class ParkLayout {
         catch (FileNotFoundException e) {
             // if the file could nnot be found, this code is executed
             // then the program exits
-            System.out.println("File not found.");
+            System.out.println("File not found(layout).");
             System.exit(0);
         }
-        
+        fileIn.useDelimiter(",");
         while(fileIn.hasNext()){
             String type = fileIn.next();
             String name = fileIn.next();
