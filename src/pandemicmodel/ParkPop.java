@@ -19,15 +19,22 @@ public class ParkPop {
     public ParkPop(int totalPop, double percentInfected, ThemePark park){
         totalPopulation = totalPop;
         for (int i = 0; i < totalPopulation*percentInfected; i++) {
-            Person person = new Person(true, park);
+            Person person = new Person(1, park);
             allPeople.add(person);
             infectedPeople.add(person);
         }
         for (int i = 0; i < totalPopulation*(1-percentInfected); i++) {
-            Person person = new Person(true, park);
+            Person person = new Person(0, park);
             allPeople.add(person);
             healthyPeople.add(person);
         }
     }
+    public void update(){
+        for (Person p : allPeople) {
+            p.update();
+        }
+        System.out.println(allPeople.size());
+    }
+
 
 }

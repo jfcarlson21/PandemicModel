@@ -16,11 +16,11 @@ public class PandemicModel {
      */
     public static void main(String[] args) {
         ThemePark myPark = new ThemePark();
-        ParkPop parkPop = new ParkPop(100,0.2,myPark);
+        ParkPop parkPop = new ParkPop(1,0.1,myPark);
         for (int i = 0; i < 100000; i++) {
             parkPop.update();
             myPark.update();
         }
+
     }
-    
 }

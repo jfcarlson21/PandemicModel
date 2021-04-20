@@ -1,16 +1,15 @@
-Ride,Space Mountain,50,8,20,
-Ride,Astro Orbiter,90,32,20,
-Ride,Tomorrowland Speedway,40,40,20,
-Ride,Monsters Inc. Laugh Floor,34,48,20,
-Ride,Tomorrowland Transit Authority,62,48,20,
-Ride,Walt Disney's Carousel of Progress,58,56,20,
-Ride,Rockettower Plaza Stage,48,60,20,
-Ride,Buzz Lightyear's Space Ranger Spin,62,68,20,
-FoodCourt,Cosmic Ray's Starlight Cafe,24,8,20,
-FoodCourt,Auntie Gravities Galactic Goodies,48,32,20,
-FoodCourt,Cool Ship,68,36,20,
-FoodCourt,Tomorrowland Light & Power Co.,48,40,20,
-FoodCourt,Tomorrowland Terrace Restaurant,14,60,20,
-FoodCourt,The Lunching Pad,52,52,20,
-Entrance, ,40,0,2,
-
+Ride,Space Mountain,50,8,20
+Ride,Astro Orbiter,90,32,20
+Ride,Tomorrowland Speedway,40,40,20
+Ride,Monsters Inc. Laugh Floor,34,48,20
+Ride,Tomorrowland Transit Authority,62,48,20
+Ride,Walt Disney's Carousel of Progress,58,56,20
+Ride,Rockettower Plaza Stage,48,60,20
+Ride,Buzz Lightyear's Space Ranger Spin,62,68,20
+FoodCourt,Cosmic Ray's Starlight Cafe,24,8,20
+FoodCourt,Auntie Gravities Galactic Goodies,48,32,20
+FoodCourt,Cool Ship,68,36,20
+FoodCourt,Tomorrowland Light & Power Co.,48,40,20
+FoodCourt,Tomorrowland Terrace Restaurant,14,60,20
+FoodCourt,The Lunching Pad,52,52,20
+Entrance, ,40,0,2

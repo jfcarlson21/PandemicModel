@@ -20,22 +20,6 @@ public class Line extends java.util.ArrayList<Person>{
         leaveSize = leaveRate;
 
     }
-    public void leaveLine(){
-        length = this.size();
-        if(length>leaveSize){
-            for(int i=0; i<leaveSize; i++){
-                Person person = this.get(0);
-                this.remove(0);
-                attraction.takeIn(person);
 
-            }
-            
-        }
-        else{
-            for (int i = 0; i < length; i++) {
-
-            }
-        }
-    }
     
 }

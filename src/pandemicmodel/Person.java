@@ -14,43 +14,51 @@ import java.util.Random;
  * @author lainiecederholm
  */
 public class Person {
-    boolean infected;
+
+    boolean doneWithDestination = false;
+    double infected;
     static Point personPoint = new Point();
     static Point desPoint = new Point();
     static ArrayList<Integer> personCoord = new ArrayList<>();
     static ArrayList<Integer> desCoord = new ArrayList<>();
     static Random rand = new Random();
-    
+
+    int timeAtDestination;
     static int pace;
     static int dest;
     static double stepX, stepY;
     static int stepCount, requiredStepNum;
     static boolean walking = true;
-    public static ThemePark Park;
     public Attraction currentAttraction;
+    public static ThemePark Park;
 
-    public Person(boolean infect, ThemePark park){
+    public Person(double infect, ThemePark park){
         infected = infect;
-        Person.enterPark();
         Park = park;
-    }
-    
-    public static Point enterPark(){
         personPoint.setLocation(Park.layout.ent);
         stepSize();
-        return personPoint;
+
     }
+
     
     public static int walkingSpeed(){
-        pace = rand.nextInt(10);
+        pace = rand.nextInt(10) +1;
         return pace;
     }
     
     public static Point nextLoc(){
         int randX, randY;
-        dest = rand.nextInt(Park.layout.attractions.size() +1);
+        int bound = Park.layout.attractions.size() +1;
+        dest = rand.nextInt(bound);
         //THIS NEXT PART NEEDS TO BE CHANGED TO SET desCoord TO CERTAIN LOCATION GIVEN IN PARK LAYOUT
-        desPoint = Park.layout.attractions.get(dest).location;
+        if (dest < bound-1) {
+            desPoint = Park.layout.attractions.get(dest).location;
+        }
+        else{
+            randX = rand.nextInt(51);
+            randY = rand.nextInt(51);
+            desPoint.setLocation(randX,randY);
+        }
         return desPoint;
     }
     
@@ -96,31 +104,50 @@ public class Person {
     public void enterLine(int dest){
         currentAttraction = Park.layout.attractions.get(dest);
         currentAttraction.line.add(this);
+        doneWithDestination = false;
     }
-    public Point Update(){
+
+    public void leaveAttraction(){
+    }
+
+    public void update(){
+
+
+        double random = rand.nextDouble();
+        if (random<infected){
+            infected = 1;
+        }
+        else{
+            infected = 0;
+        }
+
+
         if (stepCount<requiredStepNum){
             personPoint.move((int)stepX, (int)stepY);
             stepCount+=1;
+            System.out.println("just took a step");
         }
-        else if (stepCount==requiredStepNum){
+        else if (stepCount==requiredStepNum&&dest<Park.layout.attractions.size()){
             //do something based on where they are...i.e. enter ride or sit down at table
             if (walking){
                 enterLine(dest);
             }
-            else if (timeAtDestination<totalTime){
-                //stay at attraction
-
+            else if (doneWithDestination){
+                leaveAttraction();
+                walking = true;
+                stepCount=0;
             }
             else{
-                walking = true;
-                stepCount+=1;
+                //nothing, its handled by the attraction at this point
+
             }
+
         }
         else{
             stepSize();
             personPoint.move((int)stepX, (int)stepY);
             stepCount+=1;
+            System.out.println("new location");
         }
-        return personPoint;
     }
 }

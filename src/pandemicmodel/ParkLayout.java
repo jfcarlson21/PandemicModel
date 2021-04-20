@@ -10,6 +10,7 @@ import java.awt.Point;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -18,7 +19,8 @@ import java.util.Scanner;
  */
 public class ParkLayout {
     ArrayList<Attraction> attractions = new ArrayList();
-    public Point ent;
+    HashMap<Attraction, String> attractionsToNames = new HashMap<Attraction, String>();
+    public Point ent = new Point();
     public ParkLayout(String fileName){
         Scanner fileIn = null ; //initialiazed file to empty//initialiazed file to empty
         int counter = 0;
@@ -27,6 +29,7 @@ public class ParkLayout {
             // attempt to open the file
             fileIn = new Scanner(new FileInputStream (fileName));
         }
+
         
         catch (FileNotFoundException e) {
             // if the file could nnot be found, this code is executed
@@ -34,29 +37,39 @@ public class ParkLayout {
             System.out.println("File not found(layout).");
             System.exit(0);
         }
-        fileIn.useDelimiter(",");
+        fileIn.useDelimiter(",|\\n");
         while(fileIn.hasNext()){
+
             String type = fileIn.next();
             String name = fileIn.next();
             x = fileIn.nextInt();
             y = fileIn.nextInt();
             int timeAt = fileIn.nextInt();
             Point loc = new Point(x,y);
+            System.out.println(type);
             switch (type){
                 case "Ride" -> {
                     //build ride
-                    Ride ride = new Ride(loc, timeAt, 15, 8);
+                    Attraction ride = new Attraction(loc, timeAt, 15, 8);
                     attractions.add(ride);
+                    attractionsToNames.put(ride, name);
+                    break;
                 }
                 case "FoodCourt" -> {
                     //build foodCourt
-                    FoodCourt fc = new FoodCourt(loc, timeAt);
+                    Attraction fc = new Attraction(loc, timeAt, 30, 4);
                     attractions.add(fc);
+                    System.out.println("fc");
+                    attractionsToNames.put(fc, name);
+                    break;
                 }
-                case "Entrance" -> //build entrance
+                case "Entrance" -> {//build entrance
                     ent = loc;
-                default -> System.out.println("error");
-            }    
+                    break;
+                }
+
+            }
+
         }
     }
     
