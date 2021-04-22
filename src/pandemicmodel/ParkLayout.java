@@ -21,7 +21,7 @@ public class ParkLayout {
     ArrayList<Attraction> attractions = new ArrayList();
     HashMap<Attraction, String> attractionsToNames = new HashMap<Attraction, String>();
     public Point ent = new Point();
-    public ParkLayout(String fileName){
+    public ParkLayout(String fileName,int cleaners){
         Scanner fileIn = null ; //initialiazed file to empty//initialiazed file to empty
         int counter = 0;
         int x,y;
@@ -46,20 +46,32 @@ public class ParkLayout {
             y = fileIn.nextInt();
             int timeAt = fileIn.nextInt();
             Point loc = new Point(x,y);
-            System.out.println(type);
             switch (type){
                 case "Ride" -> {
                     //build ride
-                    Attraction ride = new Attraction(loc, timeAt, 15, 8);
+                    Attraction ride;
+                    if (counter<cleaners) {
+                        ride = new Attraction(loc, timeAt, 15, 8, true);
+                        counter+=1;
+                    }
+                    else{
+                        ride = new Attraction(loc, timeAt, 15, 8, false);
+                    }
                     attractions.add(ride);
                     attractionsToNames.put(ride, name);
                     break;
                 }
                 case "FoodCourt" -> {
                     //build foodCourt
-                    Attraction fc = new Attraction(loc, timeAt, 30, 4);
+                    Attraction fc;
+                    if (counter<cleaners) {
+                        fc = new Attraction(loc, timeAt, 15, 8, true);
+                        counter+=1;
+                    }
+                    else{
+                        fc = new Attraction(loc, timeAt, 15, 8, false);
+                    }
                     attractions.add(fc);
-                    System.out.println("fc");
                     attractionsToNames.put(fc, name);
                     break;
                 }

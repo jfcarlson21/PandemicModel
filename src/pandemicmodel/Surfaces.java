@@ -6,6 +6,7 @@
 package pandemicmodel;
 
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  *
@@ -13,20 +14,22 @@ import java.util.HashMap;
  */
 
 public class Surfaces {
+    static Random rand = new Random();
     double probInfect = 0;
-    double INITIALPROB;
-    double timeFactor =  1;
+    double INITIALPROBSPREAD;
+    double cleanFactor =  1;
+    double gettingInfectedProb = 1;
     HashMap<String, Double> surfaceInfectionRates = new HashMap<String, Double>();
 
     public Surfaces(String type) {
-        surfaceInfectionRates.put("steel",0.2);
+        surfaceInfectionRates.put("steel",0.1);
         surfaceInfectionRates.put("wood",0.1);
-        surfaceInfectionRates.put("plastic",0.2);
-        INITIALPROB = surfaceInfectionRates.get(type);
+        surfaceInfectionRates.put("plastic",0.1);
+        INITIALPROBSPREAD = surfaceInfectionRates.get(type);
     }
     
     public void infectSurface(){
-        probInfect=timeFactor*INITIALPROB;
+        probInfect = cleanFactor * INITIALPROBSPREAD;
     }
     public void clean(){
         probInfect=0;

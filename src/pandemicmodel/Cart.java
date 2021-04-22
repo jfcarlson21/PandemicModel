@@ -10,17 +10,26 @@ public class Cart{
     double percentThroughAttraction = 0;
     double infect;
     boolean emptyLater = false;
-    public Cart(int s){
+    Attraction attraction;
+    public Cart(int s,Attraction a){
         seats = s;
+        attraction = a;
         for (int i = 0; i < seats; i++) {
             cartSurfaces.add(new Surfaces("steel"));
         }
     }
     public void addToCart(Person person){
         cartPeople.add(person);
-        if (person.infected>0){
-            cartSurfaces.get(cartPeople.indexOf(person)).infectSurface();
-            System.out.println("surface infected");
+        if (person.infect){
+            Surfaces s = cartSurfaces.get(cartPeople.indexOf(person));
+            if(attraction.isBeingCleaned) {
+                s.cleanFactor=0.05;
+                s.infectSurface();
+                //System.out.println("surface infected");
+            }
+            else{
+                s.infectSurface();
+            }
         }
     }
 
@@ -34,6 +43,12 @@ public class Cart{
             }
             cartPeople.remove(p);
             p.doneWithDestination = true;
+            //System.out.println(p.doneWithDestination);
+        }
+    }
+    public void clean(){
+        for (Surfaces s : cartSurfaces) {
+            s.clean();
         }
     }
 }

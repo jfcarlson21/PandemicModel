@@ -16,6 +16,7 @@ import javax.swing.*;
  * @author lainiecederholm
  */
 public class gui {
+
     public static void parkInfoGUI() throws IOException{
         JPanel generalParkPanel = new JPanel();
         GridLayout layout = new GridLayout(0,2);

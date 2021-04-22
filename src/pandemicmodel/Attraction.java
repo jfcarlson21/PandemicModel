@@ -4,21 +4,26 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Attraction {
+    String cleanString = "";
     public int seatsPerCart;
     public int numOfCarts;
     Point location;
     int leaveRate;
     int timeAtAttraction;
-    int counter = 0;
     Line line = new Line (leaveRate, this);
+    int infectionCounter = 0;
+    boolean isBeingCleaned;
     ArrayList<Cart> fullRide = new ArrayList<Cart>();
-    public Attraction(Point loc, int timeAtAttraction, int cartNum, int seatsOneCart) {
+    public Attraction(Point loc, int timeAtAttraction, int cartNum, int seatsOneCart, boolean isClean) {
         seatsPerCart = seatsOneCart;
         numOfCarts = cartNum;
         leaveRate = seatsOneCart;
-
+        isBeingCleaned = isClean;
+        if (isBeingCleaned){
+            cleanString = "(sanitized)";
+        }
         for (int i = 0; i < numOfCarts; i++) {
-            Cart cartE = new Cart(seatsPerCart);
+            Cart cartE = new Cart(seatsPerCart,this);
             fullRide.add(cartE);
             location = loc;
             this.timeAtAttraction = timeAtAttraction;
