@@ -16,135 +16,65 @@ import javax.swing.*;
  * @author lainiecederholm
  */
 public class gui {
-    public static void parkInfoGUI() throws IOException{
+    public String layoutFile;
+    public int maxCapacity;
+    public double percentCapacity;
+    public double percentInfected;
+    public int employeeNumber;
+    public double minWage;
+    public double ticketPrice;
+    public double hours;
+    
+    public void parkInfoGUI() throws IOException{
         JPanel generalParkPanel = new JPanel();
         GridLayout layout = new GridLayout(0,2);
         generalParkPanel.setLayout(layout);
         JLabel filePrompt, maxCapPrompt, percentCapPrompt, percentInfPrompt, employeeNumPrompt;
-        filePrompt = new JLabel("New File Name: ");
+        JLabel minWagePrompt, ticketPricePrompt, hoursPrompt;
+        filePrompt = new JLabel("Park Layout File Name: ");
         JTextField fileName = new JTextField(20);
         maxCapPrompt = new JLabel("Maximum Capacity: ");
-        JTextField maxCapacity = new JTextField(20);
+        JTextField maximumCapacity = new JTextField(20);
         percentCapPrompt = new JLabel("Percent Capacity: ");
-        JTextField percentCapacity = new JTextField(20);
+        JTextField percentCap = new JTextField(20);
         percentInfPrompt = new JLabel("Initial Percent Infected: ");
-        JTextField percentInfected = new JTextField(20);
-        employeeNumPrompt = new JLabel("Number of Employees: ");
+        JTextField percentInf = new JTextField(20);
+        employeeNumPrompt = new JLabel("Number of Sanitation Employees: ");
         JTextField employeeNum = new JTextField(20);
+        minWagePrompt = new JLabel("State Minimum Wage: ");
+        JTextField minimumWage = new JTextField(20);
+        ticketPricePrompt = new JLabel("Ticket Price: ");
+        JTextField tickPrice = new JTextField(20);
+        hoursPrompt = new JLabel("Number of Hours Open: ");
+        JTextField hrs = new JTextField(20);
         
         generalParkPanel.add(filePrompt);
         generalParkPanel.add(fileName);
         generalParkPanel.add(maxCapPrompt);
-        generalParkPanel.add(maxCapacity);
+        generalParkPanel.add(maximumCapacity);
         generalParkPanel.add(percentCapPrompt);
-        generalParkPanel.add(percentCapacity);
+        generalParkPanel.add(percentCap);
         generalParkPanel.add(percentInfPrompt);
-        generalParkPanel.add(percentInfected);
+        generalParkPanel.add(percentInf);
         generalParkPanel.add(employeeNumPrompt);
         generalParkPanel.add(employeeNum);
+        generalParkPanel.add(minWagePrompt);
+        generalParkPanel.add(minimumWage);
+        generalParkPanel.add(ticketPricePrompt);
+        generalParkPanel.add(tickPrice);
+        generalParkPanel.add(hoursPrompt);
+        generalParkPanel.add(hrs);
         
         int result = JOptionPane.showConfirmDialog(null, generalParkPanel, 
                     "Please enter some general park info", JOptionPane.CLOSED_OPTION);
-        String fName = fileName.getText()+".txt";
-        Scanner fileIn = null ;
-        try{
-            File myObj = new File(fName);
-            if(myObj.createNewFile()){
-                System.out.println("File created: " + myObj.getName());
-            }
-            else{
-                System.out.println("error file already exists");
-            }
-        }
         
-        catch(IOException e){
-            System.out.println("error");
-            System.exit(0);
-        }
-        
-        FileWriter mW = new FileWriter(fName);
-        
-        try{
-                mW.write(maxCapacity.getText());
-                mW.write(",");
-                mW.write(percentCapacity.getText());
-                mW.write(",");
-                mW.write(percentInfected.getText());
-                mW.write(",");
-                mW.write(employeeNum.getText());
-                mW.write(",");
-                System.out.println("Success");
-            }
-        
-            catch(IOException e){
-                System.out.println("error");
-                e.printStackTrace();
-            }
-        
-        mW.close();
-    }
-    
-    public static void financeInfoGUI() throws IOException{
-        JPanel finPanel = new JPanel();
-        GridLayout layout = new GridLayout(0,2);
-        finPanel.setLayout(layout);
-        JLabel filePrompt, minWagePrompt, ticketPricePrompt, hoursPrompt;
-        filePrompt = new JLabel("New File Name: ");
-        JTextField fileName = new JTextField(20);
-        minWagePrompt = new JLabel("State Minimum Wage: ");
-        JTextField minWage = new JTextField(20);
-        ticketPricePrompt = new JLabel("Ticket Price: ");
-        JTextField ticketPrice = new JTextField(20);
-        hoursPrompt = new JLabel("Number of Hours Open: ");
-        JTextField hours = new JTextField(20);
-        
-        finPanel.add(filePrompt);
-        finPanel.add(fileName);
-        finPanel.add(minWagePrompt);
-        finPanel.add(minWage);
-        finPanel.add(ticketPricePrompt);
-        finPanel.add(ticketPrice);
-        finPanel.add(hoursPrompt);
-        finPanel.add(hours);
-        
-        int result = JOptionPane.showConfirmDialog(null, finPanel, 
-                    "Please enter some general park info", JOptionPane.CLOSED_OPTION);
-        String fName = fileName.getText()+".txt";
-        Scanner fileIn = null ;
-        try{
-            File myObj = new File(fName);
-            if(myObj.createNewFile()){
-                System.out.println("File created: " + myObj.getName());
-            }
-            else{
-                System.out.println("error file already exists");
-            }
-        }
-        
-        catch(IOException e){
-            System.out.println("error");
-            System.exit(0);
-        }
-        
-        FileWriter mW = new FileWriter(fName);
-        
-        try{
-                mW.write(minWage.getText());
-                mW.write(",");
-                mW.write(ticketPrice.getText());
-                mW.write(",");
-                mW.write(hours.getText());
-                mW.write(",");
-                System.out.println("Success");
-            }
-        
-            catch(IOException e){
-                System.out.println("error");
-                e.printStackTrace();
-            }
-        
-        mW.close();
-        
-    }
-        
+        layoutFile = fileName.getText();
+        maxCapacity = Integer.getInteger(maximumCapacity.getText());
+        percentCapacity = Double.parseDouble(percentCap.getText());
+        percentInfected = Double.parseDouble(percentInf.getText());
+        employeeNumber = Integer.getInteger(employeeNum.getText());
+        minWage = Double.parseDouble(minimumWage.getText());
+        ticketPrice = Double.parseDouble(tickPrice.getText());
+        hours = Double.parseDouble(hrs.getText());
+    }        
 }
