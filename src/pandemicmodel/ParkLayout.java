@@ -21,8 +21,9 @@ public class ParkLayout {
     ArrayList<Attraction> attractions = new ArrayList();
     HashMap<Attraction, String> attractionsToNames = new HashMap<Attraction, String>();
     public Point ent = new Point();
+    Scanner fileIn = null;
     public ParkLayout(String fileName,int cleaners){
-        Scanner fileIn = null ; //initialiazed file to empty//initialiazed file to empty
+         //initialiazed file to empty//initialiazed file to empty
         int counter = 0;
         int x,y;
         try {

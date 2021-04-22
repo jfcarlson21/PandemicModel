@@ -14,8 +14,8 @@ import org.w3c.dom.ls.LSOutput;
 public class ThemePark {
     ParkLayout layout;
     int cleaners;
-    public ThemePark (int workers){
-        layout = new ParkLayout("disneyLayout.txt",workers);
+    public ThemePark (String fileName, int workers){
+        layout = new ParkLayout(fileName,workers);
         cleaners = workers;
     }
     public void update(){

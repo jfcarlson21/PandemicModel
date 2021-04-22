@@ -5,6 +5,7 @@
  */
 package pandemicmodel;
 import java.awt.Point;
+import java.io.IOException;
 
 /**
  *
@@ -14,20 +15,28 @@ public class PandemicModel {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        gui input = new gui();
-        ThemePark myPark = new ThemePark(14);
-        ParkPop parkPop = new ParkPop(10000,0.01,myPark);
+    public static void main(String[] args) throws IOException {
+        gui GUI = new gui();
+        GUI.parkInfoGUI();
+        ThemePark myPark = new ThemePark(GUI.layoutFile, GUI.employeeNumber);
+        ParkPop parkPop = new ParkPop((int)(GUI.maxCapacity*GUI.percentCapacity), GUI.percentInfected,myPark);
         System.out.println(parkPop.infectedPeople.size());
-        //Financials financials = new Financials("disneyFinance.txt",0.5,14);
+        Financials financials = new Financials(GUI);
         for (int i = 0; i < 500; i++) {
             parkPop.update();
             myPark.update();
         }
+
         for (Attraction a : myPark.layout.attractions) {
+            GUI.stringList.add();
+            GUI.intList.add();
             System.out.printf("%-65s" + "%d\n","Infections at " + myPark.layout.attractionsToNames.get(a) + ": " + a.cleanString,a.infectionCounter);
         }
-        System.out.println(parkPop.allPeople.get(0).rideCounter);
+
+        output.showOutput();
+
+
+        //System.out.println(parkPop.allPeople.get(0).rideCounter);
         System.out.println(parkPop.allPeople.size());
         System.out.println(parkPop.infectedPeople.size());
 
