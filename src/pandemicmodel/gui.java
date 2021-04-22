@@ -5,11 +5,7 @@
  */
 package pandemicmodel;
 import java.awt.*;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
 import javax.swing.*;
 /**
  *
@@ -20,6 +16,7 @@ public class gui {
     public String layoutFile;
     public int maxCapacity;
     public double percentCapacity;
+    public double percentInfected;
     public int employeeNumber;
     public double minWage;
     public double ticketPrice;
@@ -38,7 +35,7 @@ public class gui {
         percentCapPrompt = new JLabel("Percent Capacity: ");
         JTextField percentCap = new JTextField(20);
         percentInfPrompt = new JLabel("Initial Percent Infected: ");
-        JTextField percentInfected = new JTextField(20);
+        JTextField percentInf = new JTextField(20);
         employeeNumPrompt = new JLabel("Number of Employees: ");
         JTextField employeeNum = new JTextField(20);
         minWagePrompt = new JLabel("State Minimum Wage: ");
@@ -55,7 +52,7 @@ public class gui {
         generalParkPanel.add(percentCapPrompt);
         generalParkPanel.add(percentCap);
         generalParkPanel.add(percentInfPrompt);
-        generalParkPanel.add(percentInfected);
+        generalParkPanel.add(percentInf);
         generalParkPanel.add(employeeNumPrompt);
         generalParkPanel.add(employeeNum);
         generalParkPanel.add(minWagePrompt);
@@ -71,6 +68,7 @@ public class gui {
         layoutFile = fileName.getText();
         maxCapacity = Integer.parseInt(maximumCapacity.getText());
         percentCapacity = Double.parseDouble(percentCap.getText());
+        percentInfected = Double.parseDouble(percentInf.getText());
         employeeNumber = Integer.parseInt(employeeNum.getText());
         minWage = Double.parseDouble(minimumWage.getText());
         ticketPrice = Double.parseDouble(tickPrice.getText());
