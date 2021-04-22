@@ -75,5 +75,9 @@ public class gui {
         hours = Double.parseDouble(hrs.getText());
         
     }
+    
+    public void outputGui(){
+        
+    }
         
 }
