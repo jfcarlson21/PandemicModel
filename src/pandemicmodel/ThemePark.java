@@ -12,11 +12,17 @@ import org.w3c.dom.ls.LSOutput;
  * @author lainiecederholm
  */
 public class ThemePark {
-    ParkLayout layout = new ParkLayout("disneyLayout.txt");
+    ParkLayout layout;
+    int cleaners;
+    public ThemePark (int workers){
+        layout = new ParkLayout("disneyLayout.txt",workers);
+        cleaners = workers;
+    }
     public void update(){
         for(Attraction a : layout.attractions){
-            System.out.println("\n\nRide--> "+layout.attractionsToNames.get(a));
             a.update();
+
+
         }
     }
 }

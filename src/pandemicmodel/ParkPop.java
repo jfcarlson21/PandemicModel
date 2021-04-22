@@ -31,9 +31,14 @@ public class ParkPop {
     }
     public void update(){
         for (Person p : allPeople) {
+            if (p.infected>=1 && !infectedPeople.contains(p)){
+                healthyPeople.remove(p);
+                infectedPeople.add(p);
+            }
             p.update();
         }
-        System.out.println(allPeople.size());
+
+
     }
 
 

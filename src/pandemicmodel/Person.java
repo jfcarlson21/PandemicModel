@@ -16,37 +16,33 @@ import java.util.Random;
 public class Person {
 
     boolean doneWithDestination = false;
+    boolean infect = false;
     double infected;
-    static Point personPoint = new Point();
-    static Point desPoint = new Point();
-    static ArrayList<Integer> personCoord = new ArrayList<>();
-    static ArrayList<Integer> desCoord = new ArrayList<>();
-    static Random rand = new Random();
-
-    int timeAtDestination;
-    static int pace;
-    static int dest;
-    static double stepX, stepY;
-    static int stepCount, requiredStepNum;
-    static boolean walking = true;
+    Point personPoint = new Point();
+    Point desPoint = new Point();
+    Random rand = new Random();
+    int rideCounter;
+    int pace;
+    int dest;
+    double stepX, stepY;
+    int stepCount, requiredStepNum;
+    boolean walking = true;
     public Attraction currentAttraction;
-    public static ThemePark Park;
+    public ThemePark Park;
 
     public Person(double infect, ThemePark park){
         infected = infect;
         Park = park;
         personPoint.setLocation(Park.layout.ent);
         stepSize();
-
     }
-
     
-    public static int walkingSpeed(){
-        pace = rand.nextInt(10) +1;
+    public int walkingSpeed(){
+        pace = rand.nextInt(3) +1;
         return pace;
     }
     
-    public static Point nextLoc(){
+    public Point nextLoc(){
         int randX, randY;
         int bound = Park.layout.attractions.size() +1;
         dest = rand.nextInt(bound);
@@ -62,9 +58,9 @@ public class Person {
         return desPoint;
     }
     
-    public static void stepSize(){
-        desPoint = Person.nextLoc();
-        pace = Person.walkingSpeed();
+    public void stepSize(){
+        desPoint = nextLoc();
+        pace = walkingSpeed();
         stepCount = 0;
         
         
@@ -81,9 +77,14 @@ public class Person {
             totY = yDes - yInit;
             totDist = Math.sqrt(Math.pow(totX, 2) + Math.pow(totY, 2));
             theta = Math.atan(totY/totX);
-            requiredStepNum = (int)totDist%pace;
+            requiredStepNum = (int)totDist/pace;
             stepX = pace*Math.cos(theta);
-            stepY = pace*Math.sin(theta);
+            if(yInit>=yDes){
+                stepY = -1*pace*Math.sin(theta);
+            }
+            else{
+                stepY = pace*Math.sin(theta);
+            }
             
         }
         else{
@@ -91,7 +92,7 @@ public class Person {
             totY = yInit - yDes;
             totDist = Math.sqrt(Math.pow(totX, 2) + Math.pow(totY, 2));
             theta = Math.atan(totY/totX);
-            requiredStepNum = (int)totDist%pace;
+            requiredStepNum = (int)totDist/pace;
             stepX = -1*pace*Math.cos(theta);
             if(yInit>=yDes){
                 stepY = -1*pace*Math.sin(theta);
@@ -114,32 +115,39 @@ public class Person {
 
 
         double random = rand.nextDouble();
-        if (random<infected){
+        if (random<infected && !infect){
             infected = 1;
+            infect=true;
+            try {
+                currentAttraction.infectionCounter += 1;
+            }
+            catch (NullPointerException e){
+
+            }
         }
         else{
             infected = 0;
         }
 
-
         if (stepCount<requiredStepNum){
             personPoint.move((int)stepX, (int)stepY);
             stepCount+=1;
-            System.out.println("just took a step");
         }
         else if (stepCount==requiredStepNum&&dest<Park.layout.attractions.size()){
             //do something based on where they are...i.e. enter ride or sit down at table
             if (walking){
+                rideCounter+=1;
                 enterLine(dest);
+                walking = false;
             }
             else if (doneWithDestination){
                 leaveAttraction();
                 walking = true;
-                stepCount=0;
+                stepCount+=1;
+                doneWithDestination=false;
             }
             else{
-                //nothing, its handled by the attraction at this point
-
+                //nothing, chillin on attraction
             }
 
         }
@@ -147,7 +155,7 @@ public class Person {
             stepSize();
             personPoint.move((int)stepX, (int)stepY);
             stepCount+=1;
-            System.out.println("new location");
+
         }
     }
 }
