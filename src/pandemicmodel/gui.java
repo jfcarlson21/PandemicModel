@@ -24,6 +24,7 @@ public class gui {
     public double hours;
     public ArrayList<String> stringList = new ArrayList<>();
     public ArrayList<Integer> intList = new ArrayList<>();
+    public ArrayList<String> cleanList = new ArrayList<>();
             
     public void parkInfoGUI() throws IOException{
         JPanel generalParkPanel = new JPanel();
@@ -79,7 +80,7 @@ public class gui {
         
     }
     
-    public void outputGui(){
+    public void outputGui(int totalInfe){
         JPanel outputPanel1 = new JPanel();
         GridLayout layout = new GridLayout(0,3);
         outputPanel1.setLayout(layout);
@@ -90,13 +91,16 @@ public class gui {
         outputPanel1.add(infectNum);
         outputPanel1.add(sanitationStatus);
         
-        while(!stringList.isEmpty()&& !intList.isEmpty()){
+        while(!stringList.isEmpty() && !intList.isEmpty()){
             JLabel ride = new JLabel(stringList.get(0));
             JLabel infNum = new JLabel(Integer.toString(intList.get(0)));
+            JLabel cleanStat = new JLabel(cleanList.get(0));
             outputPanel1.add(ride);
             outputPanel1.add(infNum);
+            outputPanel1.add(cleanStat);
             stringList.remove(0);
-            intList.remove(0);    
+            intList.remove(0);   
+            cleanList.remove(0);
         }
         int result = JOptionPane.showConfirmDialog(null, outputPanel1, 
                     "Ride Specific Data", JOptionPane.CLOSED_OPTION);
@@ -123,7 +127,7 @@ public class gui {
         JLabel tc = new JLabel(Integer.toString(totCap));
         JLabel ii = new JLabel(Integer.toString(totInf));
         // how to get number of infected people
-        JLabel ti = new JLabel();
+        JLabel ti = new JLabel(Integer.toString(totalInfe));
         
         outputPanel2.add(tcPrompt);
         outputPanel2.add(tc);
