@@ -93,7 +93,7 @@ public class gui {
         
         while(!stringList.isEmpty() && !intList.isEmpty()){
             JLabel ride = new JLabel(stringList.get(0));
-            JLabel infNum = new JLabel(Integer.toString(intList.get(0)));
+            JLabel infNum = new JLabel("\t"+Integer.toString(intList.get(0)));
             JLabel cleanStat = new JLabel(cleanList.get(0));
             outputPanel1.add(ride);
             outputPanel1.add(cleanStat);
