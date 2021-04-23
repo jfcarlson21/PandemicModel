@@ -88,16 +88,16 @@ public class gui {
         JLabel infectNum = new JLabel("People Infected at Ride");
         JLabel sanitationStatus = new JLabel("Sanitation Status");
         outputPanel1.add(rideName);
-        outputPanel1.add(infectNum);
         outputPanel1.add(sanitationStatus);
+        outputPanel1.add(infectNum);
         
         while(!stringList.isEmpty() && !intList.isEmpty()){
             JLabel ride = new JLabel(stringList.get(0));
             JLabel infNum = new JLabel(Integer.toString(intList.get(0)));
             JLabel cleanStat = new JLabel(cleanList.get(0));
             outputPanel1.add(ride);
-            outputPanel1.add(infNum);
             outputPanel1.add(cleanStat);
+            outputPanel1.add(infNum);
             stringList.remove(0);
             intList.remove(0);   
             cleanList.remove(0);
@@ -116,7 +116,7 @@ public class gui {
         
         double employeeWage = employeeNumber*minWage*hours;
         int totCap = (int)((int)maxCapacity*percentCapacity);
-        int totInf = (int)(maxCapacity*percentInfected);
+        int totInf = (int)(maxCapacity*percentInfected*percentInfected);
         double priceRags = employeeNumber*100*50/250;
         double priceBleach = employeeNumber*60/8;
         double totExpenses = employeeWage+priceRags+priceBleach;
@@ -126,7 +126,6 @@ public class gui {
         JLabel tr = new JLabel(Double.toString(totTicketRev));
         JLabel tc = new JLabel(Integer.toString(totCap));
         JLabel ii = new JLabel(Integer.toString(totInf));
-        // how to get number of infected people
         JLabel ti = new JLabel(Integer.toString(totalInfe));
         
         outputPanel2.add(tcPrompt);
