@@ -28,17 +28,17 @@ public class PandemicModel {
         }
 
         for (Attraction a : myPark.layout.attractions) {
-            GUI.stringList.add();
-            GUI.intList.add();
+            GUI.stringList.add(myPark.layout.attractionsToNames.get(a));
+            GUI.intList.add(a.infectionCounter);
+            GUI.cleanList.add(a.cleanString);
             System.out.printf("%-65s" + "%d\n","Infections at " + myPark.layout.attractionsToNames.get(a) + ": " + a.cleanString,a.infectionCounter);
         }
 
-        output.showOutput();
-
+        GUI.outputGui(parkPop.infectedPeople.size());
 
         //System.out.println(parkPop.allPeople.get(0).rideCounter);
         System.out.println(parkPop.allPeople.size());
-        System.out.println(parkPop.infectedPeople.size());
+        System.out.println();
 
     }
 }

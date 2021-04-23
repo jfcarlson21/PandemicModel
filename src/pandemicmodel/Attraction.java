@@ -4,7 +4,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Attraction {
-    String cleanString = "";
+    String cleanString = "(not sanitized)";
+    public int workers;
     public int seatsPerCart;
     public int numOfCarts;
     Point location;
@@ -12,15 +13,17 @@ public class Attraction {
     int timeAtAttraction;
     Line line = new Line (leaveRate, this);
     int infectionCounter = 0;
-    boolean isBeingCleaned;
+    boolean isBeingCleaned = false;
     ArrayList<Cart> fullRide = new ArrayList<Cart>();
     public Attraction(Point loc, int timeAtAttraction, int cartNum, int seatsOneCart, boolean isClean) {
         seatsPerCart = seatsOneCart;
         numOfCarts = cartNum;
         leaveRate = seatsOneCart;
         isBeingCleaned = isClean;
+
         if (isBeingCleaned){
             cleanString = "(sanitized)";
+
         }
         for (int i = 0; i < numOfCarts; i++) {
             Cart cartE = new Cart(seatsPerCart,this);

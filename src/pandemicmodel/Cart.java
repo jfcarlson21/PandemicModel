@@ -23,7 +23,7 @@ public class Cart{
         if (person.infect){
             Surfaces s = cartSurfaces.get(cartPeople.indexOf(person));
             if(attraction.isBeingCleaned) {
-                s.cleanFactor=0.05;
+                s.cleanFactor=0.05/attraction.workers;
                 s.infectSurface();
                 //System.out.println("surface infected");
             }

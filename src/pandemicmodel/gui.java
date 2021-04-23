@@ -25,7 +25,7 @@ public class gui {
     public ArrayList<String> stringList = new ArrayList<>();
     public ArrayList<Integer> intList = new ArrayList<>();
     public ArrayList<String> cleanList = new ArrayList<>();
-            
+
     public void parkInfoGUI() throws IOException{
         JPanel generalParkPanel = new JPanel();
         GridLayout layout = new GridLayout(0,2);
