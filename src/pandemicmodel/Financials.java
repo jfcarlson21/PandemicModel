@@ -14,6 +14,7 @@ import java.util.Scanner;
  *
  * @author lainiecederholm
  */
+        
 public class Financials {
     public Financials(gui inputs){
         Scanner fileIn = null;
