@@ -40,7 +40,7 @@ public class gui {
         JTextField percentCap = new JTextField(20);
         percentInfPrompt = new JLabel("Initial Percent Infected: ");
         JTextField percentInf = new JTextField(20);
-        employeeNumPrompt = new JLabel("Number of Employees: ");
+        employeeNumPrompt = new JLabel("Number of Sanitation Employees: ");
         JTextField employeeNum = new JTextField(20);
         minWagePrompt = new JLabel("State Minimum Wage: ");
         JTextField minimumWage = new JTextField(20);
@@ -81,52 +81,28 @@ public class gui {
     }
     
     public void outputGui(int totalInfe){
-        JPanel outputPanel1 = new JPanel();
-        GridLayout layout = new GridLayout(0,3);
-        outputPanel1.setLayout(layout);
-        JLabel rideName = new JLabel("Name of Ride");
-        JLabel infectNum = new JLabel("People Infected at Ride");
-        JLabel sanitationStatus = new JLabel("Sanitation Status");
-        outputPanel1.add(rideName);
-        outputPanel1.add(sanitationStatus);
-        outputPanel1.add(infectNum);
-        
-        while(!stringList.isEmpty() && !intList.isEmpty()){
-            JLabel ride = new JLabel(stringList.get(0));
-            JLabel infNum = new JLabel("\t"+Integer.toString(intList.get(0)));
-            JLabel cleanStat = new JLabel(cleanList.get(0));
-            outputPanel1.add(ride);
-            outputPanel1.add(cleanStat);
-            outputPanel1.add(infNum);
-            stringList.remove(0);
-            intList.remove(0);   
-            cleanList.remove(0);
-        }
-        int result = JOptionPane.showConfirmDialog(null, outputPanel1, 
-                    "Ride Specific Data", JOptionPane.CLOSED_OPTION);
-        
         JPanel outputPanel2 = new JPanel();
         GridLayout layout2 = new GridLayout(0,2);
         outputPanel2.setLayout(layout2);
         JLabel tePrompt = new JLabel("Total Added Expenses");
         JLabel trPrompt = new JLabel("Total Ticket Revenue");
         JLabel tcPrompt = new JLabel("Total Capacity");
-        JLabel iiPrompt = new JLabel("Initial Number of Infected");
-        JLabel tiPrompt = new JLabel("Final Number of Infected");
+        JLabel iiPrompt = new JLabel("Initial Number Infected");
+        JLabel tiPrompt = new JLabel("Final Number Infected");
         
         double employeeWage = employeeNumber*minWage*hours;
         int totCap = (int)((int)maxCapacity*percentCapacity);
-        int totInf = (int)(maxCapacity*percentInfected*percentInfected);
+        int totInf = (int)(maxCapacity*percentCapacity*percentInfected);
         double priceRags = employeeNumber*100*50/250;
         double priceBleach = employeeNumber*60/8;
         double totExpenses = employeeWage+priceRags+priceBleach;
         double totTicketRev = percentCapacity*maxCapacity*ticketPrice;
         
-        JLabel te = new JLabel(Double.toString(totExpenses));
-        JLabel tr = new JLabel(Double.toString(totTicketRev));
-        JLabel tc = new JLabel(Integer.toString(totCap));
-        JLabel ii = new JLabel(Integer.toString(totInf));
-        JLabel ti = new JLabel(Integer.toString(totalInfe));
+        JLabel te = new JLabel("\t"+Double.toString(totExpenses));
+        JLabel tr = new JLabel("\t"+Double.toString(totTicketRev));
+        JLabel tc = new JLabel("\t"+Integer.toString(totCap));
+        JLabel ii = new JLabel("\t"+Integer.toString(totInf));
+        JLabel ti = new JLabel("\t"+Integer.toString(totalInfe));
         
         outputPanel2.add(tcPrompt);
         outputPanel2.add(tc);
@@ -140,6 +116,33 @@ public class gui {
         outputPanel2.add(tr);
         int result2 = JOptionPane.showConfirmDialog(null, outputPanel2, 
                     "Park Results", JOptionPane.CLOSED_OPTION);
+        
+        
+        JPanel outputPanel1 = new JPanel();
+        GridLayout layout = new GridLayout(0,3);
+        outputPanel1.setLayout(layout);
+        JLabel rideName = new JLabel("Name of Ride");
+        JLabel infectNum = new JLabel("People Infected at Ride");
+        JLabel sanitationStatus = new JLabel("Sanitation Status");
+        outputPanel1.add(rideName);
+        outputPanel1.add(sanitationStatus);
+        outputPanel1.add(infectNum);
+        
+        while(!stringList.isEmpty() && !intList.isEmpty()){
+            JLabel ride = new JLabel(stringList.get(0));
+            JLabel infNum = new JLabel("\t"+Integer.toString(intList.get(0)));
+            JLabel cleanStat = new JLabel("\t"+cleanList.get(0));
+            outputPanel1.add(ride);
+            outputPanel1.add(cleanStat);
+            outputPanel1.add(infNum);
+            stringList.remove(0);
+            intList.remove(0);   
+            cleanList.remove(0);
+        }
+        int result = JOptionPane.showConfirmDialog(null, outputPanel1, 
+                    "Ride Specific Data", JOptionPane.CLOSED_OPTION);
+        
+        
         
     }
         
