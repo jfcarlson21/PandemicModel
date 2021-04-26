@@ -1,11 +1,11 @@
-Ride,Space Mountain,50,8,20
-Ride,Astro Orbiter,90,32,20
-Ride,Tomorrowland Speedway,40,40,20
-Ride,Monsters Inc. Laugh Floor,34,48,20
-Ride,Tomorrowland Transit Authority,62,48,20
-Ride,Walt Disney's Carousel of Progress,58,56,20
-Ride,Rockettower Plaza Stage,48,60,20
-Ride,Buzz Lightyear's Space Ranger Spin,62,68,20
+Ride,Space Mountain,50,8,10
+Ride,Astro Orbiter,90,32,10
+Ride,Tomorrowland Speedway,40,40,10
+Ride,Monsters Inc. Laugh Floor,34,48,10
+Ride,Tomorrowland Transit Authority,62,48,10
+Ride,Walt Disney's Carousel of Progress,58,56,10
+Ride,Rockettower Plaza Stage,48,60,10
+Ride,Buzz Lightyear's Space Ranger Spin,62,68,10
 FoodCourt,Cosmic Ray's Starlight Cafe,24,8,20
 FoodCourt,Auntie Gravities Galactic Goodies,48,32,20
 FoodCourt,Cool Ship,68,36,20

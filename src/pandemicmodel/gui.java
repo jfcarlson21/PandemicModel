@@ -36,9 +36,9 @@ public class gui {
         JTextField fileName = new JTextField(20);
         maxCapPrompt = new JLabel("Maximum Capacity: ");
         JTextField maximumCapacity = new JTextField(20);
-        percentCapPrompt = new JLabel("Percent Capacity: ");
+        percentCapPrompt = new JLabel("Percent Capacity (decimal): ");
         JTextField percentCap = new JTextField(20);
-        percentInfPrompt = new JLabel("Initial Percent Infected: ");
+        percentInfPrompt = new JLabel("Initial Percent Infected (decimal): ");
         JTextField percentInf = new JTextField(20);
         employeeNumPrompt = new JLabel("Number of Sanitation Employees: ");
         JTextField employeeNum = new JTextField(20);
@@ -121,8 +121,8 @@ public class gui {
         JPanel outputPanel1 = new JPanel();
         GridLayout layout = new GridLayout(0,3);
         outputPanel1.setLayout(layout);
-        JLabel rideName = new JLabel("Name of Ride");
-        JLabel infectNum = new JLabel("People Infected at Ride");
+        JLabel rideName = new JLabel("Name of Attraction");
+        JLabel infectNum = new JLabel("People Infected at Attraction");
         JLabel sanitationStatus = new JLabel("Sanitation Status");
         outputPanel1.add(rideName);
         outputPanel1.add(sanitationStatus);
@@ -140,7 +140,7 @@ public class gui {
             cleanList.remove(0);
         }
         int result = JOptionPane.showConfirmDialog(null, outputPanel1, 
-                    "Ride Specific Data", JOptionPane.CLOSED_OPTION);
+                    "Attraction Specific Data", JOptionPane.CLOSED_OPTION);
         
         
         

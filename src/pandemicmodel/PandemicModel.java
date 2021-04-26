@@ -36,7 +36,7 @@ public class PandemicModel {
 
         GUI.outputGui(parkPop.infectedPeople.size());
 
-        //System.out.println(parkPop.allPeople.get(0).rideCounter);
+        System.out.println(parkPop.allPeople.get(0).rideCounter);
         System.out.println(parkPop.allPeople.size());
         System.out.println();
 

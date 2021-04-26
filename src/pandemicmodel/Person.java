@@ -113,11 +113,11 @@ public class Person {
 
     public void update(){
 
-
         double random = rand.nextDouble();
         if (random<infected && !infect){
             infected = 1;
             infect=true;
+            //try catch because currentAttraction could be null
             try {
                 currentAttraction.infectionCounter += 1;
             }

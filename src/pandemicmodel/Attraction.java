@@ -15,12 +15,15 @@ public class Attraction {
     int infectionCounter = 0;
     boolean isBeingCleaned = false;
     ArrayList<Cart> fullRide = new ArrayList<Cart>();
+    public double speedOneFrame;
+
+
     public Attraction(Point loc, int timeAtAttraction, int cartNum, int seatsOneCart, boolean isClean) {
         seatsPerCart = seatsOneCart;
         numOfCarts = cartNum;
         leaveRate = seatsOneCart;
         isBeingCleaned = isClean;
-
+        speedOneFrame = 1.0/(double)timeAtAttraction;
         if (isBeingCleaned){
             cleanString = "(sanitized)";
 
@@ -29,7 +32,7 @@ public class Attraction {
             Cart cartE = new Cart(seatsPerCart,this);
             fullRide.add(cartE);
             location = loc;
-            this.timeAtAttraction = timeAtAttraction;
+
         }
     }
     public void takeInBatch(Cart cart){
@@ -55,14 +58,14 @@ public class Attraction {
              fullRide) {
             if (cart.percentThroughAttraction==0){
                 takeInBatch(cart);
-                cart.percentThroughAttraction+=0.1;
+                cart.percentThroughAttraction+=speedOneFrame;
             }
             else if (cart.percentThroughAttraction>1){
                 cart.empty();
                 cart.percentThroughAttraction=0;
             }
             else{
-                cart.percentThroughAttraction+=.1;
+                cart.percentThroughAttraction+=speedOneFrame;
             }
         }
 

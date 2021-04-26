@@ -37,9 +37,5 @@ public class ParkPop {
             }
             p.update();
         }
-
-
     }
-
-
 }
