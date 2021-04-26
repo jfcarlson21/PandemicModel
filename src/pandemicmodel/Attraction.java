@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Attraction {
     String cleanString = "(not sanitized)";
-    public int workers;
+    public int workers = 0;
     public int seatsPerCart;
     public int numOfCarts;
     Point location;
