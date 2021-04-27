@@ -29,6 +29,7 @@ public class Person {
     boolean walking = true;
     public Attraction currentAttraction;
     public ThemePark Park;
+    public String output;
 
     public Person(double infect, ThemePark park){
         infected = infect;
@@ -112,10 +113,11 @@ public class Person {
     }
 
     public void update(){
-
+        output = "";
         double random = rand.nextDouble();
         if (random<infected && !infect){
             infected = 1;
+            output += "INFECTED! SAD!\n";
             infect=true;
             //try catch because currentAttraction could be null
             try {
@@ -130,14 +132,16 @@ public class Person {
         }
 
         if (stepCount<requiredStepNum){
-            personPoint.move((int)stepX, (int)stepY);
             stepCount+=1;
+            output+= "Taking step ("   + stepCount+"/"+requiredStepNum+") towards attraction " + dest;
+            personPoint.move((int)stepX, (int)stepY);
         }
         else if (stepCount==requiredStepNum&&dest<Park.layout.attractions.size()){
             //do something based on where they are...i.e. enter ride or sit down at table
             if (walking){
                 rideCounter+=1;
                 enterLine(dest);
+                output+="Entering line for attraction "+dest;
                 walking = false;
             }
             else if (doneWithDestination){
@@ -145,16 +149,20 @@ public class Person {
                 walking = true;
                 stepCount+=1;
                 doneWithDestination=false;
+                output+="Leaving attraction " + dest;
             }
             else{
+                output+="Still on attraction " + dest;
                 //nothing, chillin on attraction
             }
 
         }
         else{
             stepSize();
+            output += "Finding a new destination\n";
             personPoint.move((int)stepX, (int)stepY);
             stepCount+=1;
+            output+= "Taking step ("   + stepCount+"/"+requiredStepNum+") towards attraction " + dest;
 
         }
     }

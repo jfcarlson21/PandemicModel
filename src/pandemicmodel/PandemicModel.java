@@ -26,7 +26,8 @@ public class PandemicModel {
             parkPop.update();
             myPark.update();
         }
-
+        System.out.println("Person 0 went on "+parkPop.allPeople.get(0).rideCounter+" rides");
+        System.out.println("Person 0 infected? "+parkPop.allPeople.get(0).infect+"\n");
         for (Attraction a : myPark.layout.attractions) {
             GUI.stringList.add(myPark.layout.attractionsToNames.get(a));
             GUI.intList.add(a.infectionCounter);
@@ -35,8 +36,6 @@ public class PandemicModel {
         }
 
         GUI.outputGui(parkPop.infectedPeople.size());
-
-        System.out.println(parkPop.allPeople.get(0).rideCounter);
         System.out.println(parkPop.allPeople.size());
         System.out.println();
 
